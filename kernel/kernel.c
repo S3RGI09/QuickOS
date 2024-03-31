@@ -1,7 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Declaración de las nuevas funciones del microkernel
+// Variables globales para la gestión de procesos
+int numProcesos = 0;
+
+// Declaración de las nuevas funciones del kernel
 void cargarSistemaRed();
 void cargarSistemaArchivos();
 void iniciarServiciosRed();
@@ -9,13 +12,17 @@ void detenerServiciosRed();
 void iniciarServiciosArchivos();
 void detenerServiciosArchivos();
 
-// Definición de las funciones existentes del microkernel
+// Definición de las funciones existentes del kernel
 void iniciarSistemaOperativo();
 void cargarAdministradorMemoria();
 void cargarAdministradorProcesos();
 void iniciarServiciosEsenciales();
 void ejecutarSistemaOperativo();
 void detenerSistemaOperativo();
+
+// Funciones adicionales para la gestión de procesos
+void crearProceso();
+void destruirProceso();
 
 int main() {
     iniciarSistemaOperativo();
@@ -35,7 +42,7 @@ int main() {
 }
 
 void iniciarSistemaOperativo() {
-    printf("Iniciando microkernel...\n");
+    printf("Iniciando kernel...\n");
 }
 
 void cargarAdministradorMemoria() {
@@ -60,29 +67,52 @@ void iniciarServiciosEsenciales() {
 
 void iniciarServiciosArchivos() {
     printf("Iniciando servicios de archivos...\n");
-    // Lógica para iniciar los servicios de archivos
 }
 
 void iniciarServiciosRed() {
     printf("Iniciando servicios de red...\n");
-    // Lógica para iniciar los servicios de red
 }
 
 void ejecutarSistemaOperativo() {
     printf("Ejecutando sistema operativo...\n");
-    // Aquí se ejecutaría el bucle principal del sistema operativo
+    
+    // Simular la creación de procesos
+    crearProceso();
+    crearProceso();
+    crearProceso();
+    
+    // Simular ejecución de procesos
+    
+    // Simular interrupciones y manejo de eventos
+    
+    // Simular destrucción de procesos
+    destruirProceso();
+    destruirProceso();
+    destruirProceso();
 }
 
 void detenerServiciosRed() {
     printf("Deteniendo servicios de red...\n");
-    // Lógica para detener los servicios de red
 }
 
 void detenerServiciosArchivos() {
     printf("Deteniendo servicios de archivos...\n");
-    // Lógica para detener los servicios de archivos
 }
 
 void detenerSistemaOperativo() {
-    printf("Deteniendo sistema operativo...\n");
+    printf("Deteniendo kernel...\n");
+}
+
+void crearProceso() {
+    numProcesos++;
+    printf("Creando proceso %d...\n", numProcesos);
+}
+
+void destruirProceso() {
+    if (numProcesos > 0) {
+        printf("Destruyendo proceso %d...\n", numProcesos);
+        numProcesos--;
+    } else {
+        printf("No hay procesos para destruir.\n");
+    }
 }
