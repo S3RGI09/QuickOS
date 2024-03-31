@@ -4,12 +4,23 @@
 #include <unistd.h>
 #include <arpa/inet.h>
 
-#define PORT 8080
+#define PORT 80
+#define MAX_BUFFER_SIZE 1024
 
 int main() {
-    int sockfd, connfd;
-    struct sockaddr_in servidor, cliente;
-    char mensaje[1000] = "¡Hola desde el servidor!";
+    int sockfd;
+    struct sockaddr_in servidor;
+    char direccion_web[100];
+    char mensaje[200];
+    char buffer[MAX_BUFFER_SIZE];
+
+    // Solicitar al usuario la dirección del sitio web
+    printf("Introduce la dirección del sitio web: ");
+    fgets(direccion_web, sizeof(direccion_web), stdin);
+    direccion_web[strcspn(direccion_web, "\n")] = 0; // Eliminar el salto de línea
+
+    // Crear la solicitud HTTP
+    snprintf(mensaje, sizeof(mensaje), "GET / HTTP/1.1\r\nHost: %s\r\n\r\n", direccion_web);
 
     // Crear socket TCP
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
@@ -17,42 +28,29 @@ int main() {
         printf("Error al crear el socket.\n");
         exit(0);
     }
-    printf("Socket creado correctamente.\n");
 
     // Configurar estructura del servidor
     servidor.sin_family = AF_INET;
-    servidor.sin_addr.s_addr = htonl(INADDR_ANY);
     servidor.sin_port = htons(PORT);
+    servidor.sin_addr.s_addr = inet_addr("93.184.216.34"); // Dirección IP de ejemplo
 
-    // Enlazar el socket a la dirección y puerto especificados
-    if (bind(sockfd, (struct sockaddr*)&servidor, sizeof(servidor)) != 0) {
-        printf("Error al enlazar el socket.\n");
+    // Conectar al servidor remoto
+    if (connect(sockfd, (struct sockaddr *)&servidor, sizeof(servidor)) < 0) {
+        printf("Error al conectar al servidor.\n");
         exit(0);
     }
-    printf("Socket enlazado correctamente.\n");
 
-    // Escuchar por conexiones entrantes
-    if (listen(sockfd, 5) != 0) {
-        printf("Error al escuchar por conexiones.\n");
-        exit(0);
+    // Enviar solicitud HTTP al servidor
+    send(sockfd, mensaje, strlen(mensaje), 0);
+
+    // Recibir respuesta del servidor
+    int bytes_recibidos;
+    while ((bytes_recibidos = recv(sockfd, buffer, MAX_BUFFER_SIZE, 0)) > 0) {
+        // Imprimir respuesta del servidor
+        fwrite(buffer, 1, bytes_recibidos, stdout);
     }
-    printf("Escuchando por conexiones entrantes...\n");
 
-    // Aceptar la conexión entrante
-    socklen_t len = sizeof(cliente);
-    connfd = accept(sockfd, (struct sockaddr*)&cliente, &len);
-    if (connfd < 0) {
-        printf("Error al aceptar la conexión.\n");
-        exit(0);
-    }
-    printf("Conexión aceptada desde %s:%d\n", inet_ntoa(cliente.sin_addr), ntohs(cliente.sin_port));
-
-    // Enviar mensaje al cliente
-    write(connfd, mensaje, strlen(mensaje));
-    printf("Mensaje enviado al cliente.\n");
-
-    // Cerrar sockets
-    close(connfd);
+    // Cerrar socket
     close(sockfd);
 
     return 0;
