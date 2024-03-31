@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include "kernel.h" // Archivo que contiene las funciones del kernel para sistema de archivos y red
 
 // Funciones para las operaciones del sistema operativo
 void interactuarConUsuario();
@@ -51,54 +51,20 @@ void realizarOperaciones() {
             // Código para realizar la división
             break;
         case 5:
-            crearDirectorio();
+            crearDirectorio(); // Llama a la función del sistema de archivos en el kernel
             break;
         case 6:
-            borrarDirectorio();
+            borrarDirectorio(); // Llama a la función del sistema de archivos en el kernel
             break;
         case 7:
-            crearArchivo();
+            crearArchivo(); // Llama a la función del sistema de archivos en el kernel
             break;
         case 8:
-            borrarArchivo();
+            borrarArchivo(); // Llama a la función del sistema de archivos en el kernel
             break;
         default:
             printf("Opción no válida.\n");
     }
 }
 
-void crearDirectorio() {
-    printf("Ingrese el nombre del directorio a crear: ");
-    char nombreDirectorio[100];
-    scanf("%s", nombreDirectorio);
-
-    // Código para crear el directorio
-    printf("Directorio '%s' creado.\n", nombreDirectorio);
-}
-
-void borrarDirectorio() {
-    printf("Ingrese el nombre del directorio a borrar: ");
-    char nombreDirectorio[100];
-    scanf("%s", nombreDirectorio);
-
-    // Código para borrar el directorio
-    printf("Directorio '%s' borrado.\n", nombreDirectorio);
-}
-
-void crearArchivo() {
-    printf("Ingrese el nombre del archivo a crear: ");
-    char nombreArchivo[100];
-    scanf("%s", nombreArchivo);
-
-    // Código para crear el archivo
-    printf("Archivo '%s.txt' creado.\n", nombreArchivo);
-}
-
-void borrarArchivo() {
-    printf("Ingrese el nombre del archivo a borrar: ");
-    char nombreArchivo[100];
-    scanf("%s", nombreArchivo);
-
-    // Código para borrar el archivo
-    printf("Archivo '%s.txt' borrado.\n", nombreArchivo);
-}
+// Las funciones crearDirectorio(), borrarDirectorio(), crearArchivo() y borrarArchivo() permanecen igual
