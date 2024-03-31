@@ -29,6 +29,7 @@ QuickOS proporciona las siguientes funcionalidades básicas:
 Si quieres contribuir a QuickOS, ¡estaremos encantados de recibir tus contribuciones! Siéntete libre de enviar pull requests con nuevas características, mejoras de código o correcciones de errores.
 ## Licencia
 Este proyecto esta bajo licencia Creative Commons, estas son las pautas:
+
 **Aceptado**:
 - Uso personal y no comercial del contenido.
 - Distribución del contenido, ya sea original o modificado, siempre que se atribuya al autor original y se aplique la misma licencia al contenido derivado.
