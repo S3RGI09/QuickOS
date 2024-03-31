@@ -24,6 +24,7 @@ QuickOS proporciona las siguientes funcionalidades básicas:
 - Realizar operaciones matemáticas simples (suma, resta, multiplicación, división).
 - Crear y borrar directorios.
 - Crear y borrar archivos de texto.
+- Conectarse a una Web de Internet (conexion a Internet requerida)
 ## Contribución
 Si quieres contribuir a QuickOS, ¡estaremos encantados de recibir tus contribuciones! Siéntete libre de enviar pull requests con nuevas características, mejoras de código o correcciones de errores.
 ## Licencia
