@@ -16,15 +16,15 @@ Para compilar QuickOS, simplemente ejecute el siguiente comando en su terminal:
 
 ```bash gcc -o quickos kernel.c quickos.c```
 
-# Cómo ejecutar
+## Cómo ejecutar
 Una vez compilado, puede ejecutar QuickOS ejecutando el archivo generado. Por ejemplo:```./quickos```
 
-#Funcionalidades
+## Funcionalidades
 QuickOS proporciona las siguientes funcionalidades básicas:
 - Realizar operaciones matemáticas simples (suma, resta, multiplicación, división).
 - Crear y borrar directorios.
 - Crear y borrar archivos de texto.
-# Contribución
+## Contribución
 Si quieres contribuir a QuickOS, ¡estaremos encantados de recibir tus contribuciones! Siéntete libre de enviar pull requests con nuevas características, mejoras de código o correcciones de errores.
-# Licencia
+## Licencia
 Este proyecto es de dominio público y está libre de licencias. Siéntete libre de usar, modificar y distribuir el código como desees, sin restricciones.
