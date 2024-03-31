@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "kernel.h" // Archivo que contiene las funciones del kernel para sistema de archivos y red
+#include "kernel/kernel.h" // Archivo que contiene las funciones del kernel para sistema de archivos y red
 
 // Función para conectar a una web
 void conectarWeb() {
