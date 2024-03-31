@@ -14,8 +14,7 @@ QuickOS es un sistema operativo básico diseñado para ser ligero y fácil de us
 
 Para compilar QuickOS, simplemente ejecute el siguiente comando en su terminal:
 
-```bash
-gcc -o quickos kernel.c quickos.c```
+```bash gcc -o quickos kernel.c quickos.c```
 
 # Cómo ejecutar
 Una vez compilado, puede ejecutar QuickOS ejecutando el archivo generado. Por ejemplo:```./quickos```
