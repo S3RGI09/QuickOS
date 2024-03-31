@@ -5,6 +5,8 @@ QuickOS es un sistema operativo básico diseñado para ser ligero y fácil de us
 - `kernel.c`: Contiene el microkernel que proporciona las funciones esenciales para el sistema operativo.
 - `quickos.c`: Implementa las funciones del sistema operativo que permiten la interacción con el usuario y las operaciones básicas de sistema.
 
+QuickOS no depende de ningun proyecto externo como Linux, BSD, GNU... El kernel esta echo desde cero y las herramientas que trae el OS por defecto estan creadas independientemente.
+
 ## Requisitos
 
 - Compilador de C compatible (por ejemplo, GCC)
